@@ -163,6 +163,11 @@ hashT<elemType>::hashT(int size) : HTSize(size)
 {
     HTable = new elemType[HTSize];
     indexStatusList = new int[HTSize];
+
+    // Initialize all positions to empty (0)
+    for (int i = 0; i < HTSize; i++)
+        indexStatusList[i] = 0;
+
     length = 0;
 }
 
