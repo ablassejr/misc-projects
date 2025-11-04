@@ -1,0 +1,9 @@
+.venv/
+.mypy_cache/
+.gitkeep
+*.DS_Store
+*.editorconfig
+.claude/
+.idea/
+.vscode/
+

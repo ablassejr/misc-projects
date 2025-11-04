@@ -1,0 +1,10 @@
+general:
+  kafka-topic: test-topic
+spring:
+  kafka:
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: transaction-listener
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties: com.jpmc.midascore.foundation
