@@ -249,6 +249,160 @@ Each guide is structured with:
 
 ---
 
+### Challenging Projects - Systems & Applications
+
+#### 10. Text Editor - Data Structures and Design Patterns
+**File:** `10-text-editor-guide.md`
+**Topics:**
+- Text buffer data structures (gap buffer, rope, piece table)
+- Efficient insertion and deletion
+- Undo/redo implementation
+- Cursor movement and selection
+- File I/O
+- Terminal/GUI programming
+
+**Key Concepts:**
+- Gap buffer for sequential editing
+- Rope for large files
+- Piece table for undo/redo
+- Command pattern
+- Event-driven programming
+
+**Best For:** Understanding how editors like VS Code and Vim work internally
+
+**Difficulty:** Intermediate to Advanced
+**Time:** 2-8 weeks
+
+---
+
+#### 11. Space Invaders - Game Development Fundamentals
+**File:** `11-space-invaders-guide.md`
+**Topics:**
+- Game loop architecture
+- Entity management
+- Collision detection
+- Input handling
+- Rendering and graphics
+- Sound integration
+- Delta time and frame rate
+
+**Key Concepts:**
+- Update-render-sleep loop
+- Entity-component patterns
+- Bounding box collision
+- State management
+- Sprite rendering
+
+**Best For:** Learning game development from first principles
+
+**Difficulty:** Beginner to Intermediate
+**Time:** 1-4 weeks
+
+---
+
+#### 12. Tiny BASIC Compiler - Language Implementation
+**File:** `12-tiny-basic-compiler-guide.md`
+**Topics:**
+- Lexical analysis (tokenization)
+- Parsing (recursive descent)
+- Abstract Syntax Trees (AST)
+- Semantic analysis
+- Code generation
+- Error handling
+
+**Key Concepts:**
+- Tokenizer implementation
+- Grammar and BNF notation
+- Recursive descent parsing
+- Symbol tables
+- Code generation strategies
+- Transpilation
+
+**Best For:** Understanding how programming languages work
+
+**Difficulty:** Intermediate to Advanced
+**Time:** 2-12 weeks
+
+---
+
+#### 13. Mini Operating System - Systems Programming
+**File:** `13-mini-os-guide.md`
+**Topics:**
+- Bootloader development
+- Real mode to protected mode
+- Memory management (physical and virtual)
+- Process scheduling
+- Interrupt handling
+- Device drivers
+- File systems
+
+**Key Concepts:**
+- Boot sector and BIOS
+- Global Descriptor Table (GDT)
+- Interrupt Descriptor Table (IDT)
+- Paging and virtual memory
+- Context switching
+- Round-robin scheduling
+
+**Best For:** Understanding how operating systems work at the lowest level
+
+**Difficulty:** Advanced
+**Time:** 3-12+ months
+
+---
+
+#### 14. Spreadsheet - Data Management and Formulas
+**File:** `14-spreadsheet-guide.md`
+**Topics:**
+- Sparse matrix storage
+- Formula parsing and evaluation
+- Dependency graph management
+- Cell reference systems
+- Built-in functions
+- Circular reference detection
+- Auto-recalculation
+
+**Key Concepts:**
+- Hash map for sparse data
+- Expression parsing
+- Dependency tracking
+- Topological sort
+- Relative vs absolute references
+- Formula language design
+
+**Best For:** Combining text editor and compiler concepts
+
+**Difficulty:** Intermediate to Advanced
+**Time:** 2-8 weeks
+
+---
+
+#### 15. Console Emulator - Hardware Simulation
+**File:** `15-console-emulator-guide.md`
+**Topics:**
+- CPU emulation (instruction sets)
+- Memory mapping
+- Graphics rendering (PPU/GPU)
+- Sound synthesis (APU)
+- Input handling
+- Timing and synchronization
+- Debugging tools
+
+**Key Concepts:**
+- Fetch-decode-execute cycle
+- Opcode implementation
+- Memory-mapped I/O
+- Sprite rendering
+- Cycle-accurate timing
+- Test ROM validation
+
+**Best For:** Understanding hardware architecture through software
+
+**Difficulty:** Intermediate (CHIP-8) to Advanced (Game Boy, NES)
+**Time:** 1 week (CHIP-8) to 6+ months (advanced consoles)
+
+---
+
 ## Learning Paths
 
 ### Path 1: Systems Programmer
@@ -297,38 +451,67 @@ Weeks 11-12: AI/ML (06, 09)
 
 ---
 
+### Path 5: Challenging Projects Path
+**Duration:** 12-24 weeks
+```
+Week 1-2: Space Invaders (11) - Game development basics
+Week 3-5: Text Editor (10) - Data structures
+Week 6-9: Tiny BASIC Compiler (12) - Language implementation
+Week 10-13: Spreadsheet (14) - Combining concepts
+Week 14-17: Console Emulator (15) - Start with CHIP-8
+Week 18-24: Mini OS (13) - Advanced systems programming
+```
+**Skills:** Systems programming, compilers, game dev, emulation, OS internals
+
+**Description:** This path follows Austin Z. Henley's "Challenging Projects Every Programmer Should Try" - projects that teach fundamental computer science concepts through hands-on implementation.
+
+---
+
 ## Project Difficulty Levels
 
 ### Beginner
 - **Git Tools (05)** - Simple C program, good entry point
 - **Reversal (04)** - Basic C++ file I/O
 - **Prompt Engineering (06)** - No coding required initially
+- **Space Invaders (11)** - Game development introduction
 
 ### Intermediate
 - **Count Primes (01)** - Introduces concurrency
 - **Hash Track (02)** - Data structures and templates
 - **Simple Shell (03)** - Multiple OS concepts
 - **Forage Midas (08)** - Enterprise patterns
+- **Text Editor (10)** - Advanced data structures
+- **Console Emulator - CHIP-8 (15)** - Start of emulation
+- **Spreadsheet (14)** - Combining concepts
+- **Tiny BASIC Compiler (12)** - Language basics
 
 ### Advanced
 - **Nand2Tetris (07)** - Complete system, significant time investment
 - **AI Agents & Text Generation (09)** - Requires ML background
+- **Mini Operating System (13)** - Low-level systems programming
+- **Console Emulator - Game Boy/NES (15)** - Advanced emulation
 
 ---
 
 ## Key Skills Matrix
 
-| Project | C/C++ | Java | Python | OS | Data Struct | Arch | AI/ML | Web |
-|---------|-------|------|--------|----|-----------  |------|-------|-----|
-| Count Primes (01) | ✓✓ | | | ✓✓ | | | | |
-| Hash Track (02) | ✓✓ | | | | ✓✓✓ | | | |
-| Simple Shell (03) | ✓✓✓ | | | ✓✓✓ | | | | |
-| Reversal (04) | ✓✓ | | | | | | | |
-| Git Tools (05) | ✓ | | | ✓ | | | | |
-| Prompt Engineering (06) | | | | | | | ✓✓ | |
-| Nand2Tetris (07) | | | ✓ | ✓ | ✓ | ✓✓✓ | | |
-| Forage Midas (08) | | ✓✓✓ | | | ✓ | | | ✓✓ |
-| AI Agents (09) | | | ✓✓✓ | | | | ✓✓✓ | |
+| Project | C/C++ | Java | Python | OS | Data Struct | Arch | AI/ML | Game Dev | Compilers |
+|---------|-------|------|--------|----|-----------  |------|-------|----------|-----------|
+| Count Primes (01) | ✓✓ | | | ✓✓ | | | | | |
+| Hash Track (02) | ✓✓ | | | | ✓✓✓ | | | | |
+| Simple Shell (03) | ✓✓✓ | | | ✓✓✓ | | | | | |
+| Reversal (04) | ✓✓ | | | | | | | | |
+| Git Tools (05) | ✓ | | | ✓ | | | | | |
+| Prompt Engineering (06) | | | | | | | ✓✓ | | |
+| Nand2Tetris (07) | | | ✓ | ✓ | ✓ | ✓✓✓ | | | |
+| Forage Midas (08) | | ✓✓✓ | | | ✓ | | | | |
+| AI Agents (09) | | | ✓✓✓ | | | | ✓✓✓ | | |
+| Text Editor (10) | ✓✓ | | ✓✓ | | ✓✓✓ | | | | |
+| Space Invaders (11) | ✓ | | ✓✓ | | ✓ | | | ✓✓✓ | |
+| Tiny BASIC (12) | ✓✓ | | ✓✓ | | ✓✓ | | | | ✓✓✓ |
+| Mini OS (13) | ✓✓✓ | | | ✓✓✓ | ✓ | ✓✓✓ | | | |
+| Spreadsheet (14) | | | ✓✓ | | ✓✓ | | | | ✓✓ |
+| Console Emulator (15) | ✓✓ | | ✓✓ | | ✓ | ✓✓✓ | | | |
 
 Legend: ✓ = Basic, ✓✓ = Intermediate, ✓✓✓ = Advanced
 
@@ -467,6 +650,7 @@ These education aides are provided as-is for educational purposes. Original proj
 - **Nand2Tetris:** Created by Noam Nisan and Shimon Schocken
 - **Prompt Engineering Tutorial:** Anthropic
 - **Forage Midas:** JPMC Forage Program
+- **Challenging Projects (10-15):** Inspired by [Austin Z. Henley's blog post](https://austinhenley.com/blog/challengingprojects.html) "Challenging Projects Every Programmer Should Try"
 - All other projects are learning implementations
 
 ---
@@ -476,12 +660,20 @@ These education aides are provided as-is for educational purposes. Original proj
 **New to programming?** Start with:
 1. Git Tools (05)
 2. Reversal (04)
-3. Prompt Engineering (06)
+3. Space Invaders (11)
+4. Prompt Engineering (06)
 
 **Have programming experience?** Jump to:
 1. Simple Shell (03)
 2. Hash Track (02)
-3. Forage Midas (08)
+3. Text Editor (10)
+4. Tiny BASIC Compiler (12)
+
+**Want to build something impressive?** Try the Challenging Projects Path (Path 5):
+1. Space Invaders (11)
+2. Text Editor (10)
+3. Spreadsheet (14)
+4. Console Emulator - CHIP-8 (15)
 
 **Want the full experience?** Follow the Complete Computer Scientist path
 
