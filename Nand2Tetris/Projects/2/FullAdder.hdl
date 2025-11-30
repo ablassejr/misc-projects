@@ -11,13 +11,15 @@ CHIP FullAdder {
         carry;   // Left bit of a + b + c
 
     PARTS:
-    //// TODO: CONFUSED THE CARRY BIT WITH THE SUM I THINK
-    HalfAdder(a=a, b=b, sum=absum, carry=abcarry);
-    HalfAdder(a=c, b=b, sum=cbsum, carry=cbcarry);
-    And(a=absum, b=c, out=alltrue);
-    Xor(a=abcarry, b=c, out=onetrue);
-    Or(a=alltrue, b=onetrue, out=carry);
-    Or(a=cbsum, b=absum, out=aborbcsum);
-    And(a=abcarry, b=c, out=acsum);
-    Or(a=aborbcsum, b=acsum, out=sum);
+    // for sum --> 1, either one or all three inputs must be 1
+    // for carry --> 1, 2 or 3 inputs must be 1
+    Xor(a=a, b=b, out=abXor);
+    Xor(a=abXor, b=c, out=allXor);
+    And(a=a, b=b, out=abAnd);
+    And(a=abAnd, b=c, out=allAnd);
+    Or(a=allAnd, b=allXor, out=sum);
+    And(a=a, b=c, out=acAnd);
+    And(a=b, b=c, out=bcAnd);
+    Or(a=acAnd, b=bcAnd, out=acOrbcAnd);
+    Or(a=acOrbcAnd, b=abAnd, out=carry);
 }
