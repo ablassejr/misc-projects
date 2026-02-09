@@ -1,3 +1,9 @@
+// Program Name: Customer.java
+// Programmer: Ablasse Kingcaid-Ouedraogo, 2441505
+// Assignment Number: Project 2
+// Purpose: This file represents the customer entity. It is responsible for entering
+//  the shop and checking in for a haircut.
+
 package barber;
 
 public class Customer {

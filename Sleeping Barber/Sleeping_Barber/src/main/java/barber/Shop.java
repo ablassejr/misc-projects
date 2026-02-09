@@ -1,3 +1,9 @@
+// Program Name: Shop.java
+// Programmer: Ablasse Kingcaid-Ouedraogo, 2441505
+// Assignment Number: Project 2
+// Purpose: This file represents the shop entity. It is responsible for the generation
+//  of customers and coordination of their service.
+
 package barber;
 
 import java.util.concurrent.ThreadLocalRandom;

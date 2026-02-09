@@ -21,7 +21,18 @@ def decimal_to_binary(n: int) -> str:
     """
     # TODO: Implement this function
     # Remember: repeatedly divide by 2, collect remainders
-    pass
+    binString: str = ""
+    while n >= 1:
+        if n == 1:
+            binString.append("1")
+            break
+        if n % 2:
+            binString.append("1")
+            n = (n - 1) / 2
+        else:
+            binString.append("0")
+            n = n / 2
+
 
 
 def binary_to_decimal(binary: str) -> int:
@@ -39,7 +50,6 @@ def binary_to_decimal(binary: str) -> int:
     """
     # TODO: Implement this function
     # Remember: multiply each bit by its place value (power of 2)
-    pass
 
 
 def binary_add(a: str, b: str) -> str:

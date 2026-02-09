@@ -1,3 +1,9 @@
+// Program Name: Barber.java
+// Programmer: Ablasse Kingcaid-Ouedraogo, 2441505
+// Assignment Number: Project 2
+// Purpose: This file represents the barber entity. It is responsible for cutting
+//  hair and sleeping when there are no customers.
+
 package barber;
 
 public class Barber {
