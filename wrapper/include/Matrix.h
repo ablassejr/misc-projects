@@ -8,7 +8,10 @@
 extern "C" {
 #include "la_matrix.h"
 #include "la_elimination.h"
+#include "la_ops.h"
 }
+
+#include <utility>
 
 class Matrix {
     LAMatrix* m_;
@@ -34,6 +37,14 @@ public:
     Matrix ref() const;
     Matrix rref() const;
     int solve(std::vector<double>& result) const;
+
+    /* Ch.2: Matrix Operations */
+    Matrix operator+(const Matrix& other) const;
+    Matrix operator*(const Matrix& other) const;
+    Matrix operator*(double scalar) const;
+    Matrix transpose() const;
+    Matrix inverse() const;
+    std::pair<Matrix, Matrix> lu() const;
 
     /* Factory */
     static Matrix identity(int n);

@@ -63,6 +63,64 @@ int Matrix::solve(std::vector<double>& result) const {
     return la_solve(m_, result.data());
 }
 
+Matrix Matrix::operator+(const Matrix& other) const {
+    LAMatrix* r = la_matrix_add(m_, other.m_);
+    if (!r) throw std::runtime_error("Addition failed (dimension mismatch?)");
+    Matrix res(r->rows, r->cols);
+    la_matrix_free(res.m_);
+    res.m_ = r;
+    return res;
+}
+
+Matrix Matrix::operator*(const Matrix& other) const {
+    LAMatrix* r = la_matrix_mul(m_, other.m_);
+    if (!r) throw std::runtime_error("Multiplication failed (dimension mismatch?)");
+    Matrix res(r->rows, r->cols);
+    la_matrix_free(res.m_);
+    res.m_ = r;
+    return res;
+}
+
+Matrix Matrix::operator*(double scalar) const {
+    LAMatrix* r = la_matrix_scalar_mul(m_, scalar);
+    if (!r) throw std::runtime_error("Scalar multiply failed");
+    Matrix res(r->rows, r->cols);
+    la_matrix_free(res.m_);
+    res.m_ = r;
+    return res;
+}
+
+Matrix Matrix::transpose() const {
+    LAMatrix* r = la_matrix_transpose(m_);
+    if (!r) throw std::runtime_error("Transpose failed");
+    Matrix res(r->rows, r->cols);
+    la_matrix_free(res.m_);
+    res.m_ = r;
+    return res;
+}
+
+Matrix Matrix::inverse() const {
+    LAMatrix* r = la_matrix_inverse(m_);
+    if (!r) throw std::runtime_error("Matrix is singular");
+    Matrix res(r->rows, r->cols);
+    la_matrix_free(res.m_);
+    res.m_ = r;
+    return res;
+}
+
+std::pair<Matrix, Matrix> Matrix::lu() const {
+    LAMatrix *L = nullptr, *U = nullptr;
+    int rc = la_lu_factorize(m_, &L, &U);
+    if (rc != 0) throw std::runtime_error("LU factorization failed (zero pivot)");
+    Matrix Lm(L->rows, L->cols);
+    la_matrix_free(Lm.m_);
+    Lm.m_ = L;
+    Matrix Um(U->rows, U->cols);
+    la_matrix_free(Um.m_);
+    Um.m_ = U;
+    return {Lm, Um};
+}
+
 Matrix Matrix::identity(int n) {
     Matrix m(n, n);
     for (int i = 0; i < n; i++) m(i, i) = 1.0;
