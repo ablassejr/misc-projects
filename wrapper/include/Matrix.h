@@ -11,6 +11,7 @@ extern "C" {
 #include "la_ops.h"
 #include "la_determinant.h"
 #include "la_vecspace.h"
+#include "la_inner.h"
 }
 
 #include <utility>
