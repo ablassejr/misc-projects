@@ -5,14 +5,12 @@
 #include <vector>
 #include <stdexcept>
 
-extern "C" {
 #include "la_matrix.h"
 #include "la_elimination.h"
 #include "la_ops.h"
 #include "la_determinant.h"
 #include "la_vecspace.h"
 #include "la_inner.h"
-}
 
 #include <utility>
 

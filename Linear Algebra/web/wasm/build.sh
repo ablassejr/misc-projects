@@ -7,8 +7,8 @@ OUT_DIR="$SCRIPT_DIR/../dist"
 
 mkdir -p "$OUT_DIR"
 
-emcc \
-    "$ENGINE_DIR"/src/*.c \
+em++ \
+    "$ENGINE_DIR"/src/*.cpp \
     -I"$ENGINE_DIR"/include \
     -o "$OUT_DIR/engine.js" \
     -s EXPORTED_FUNCTIONS="[\

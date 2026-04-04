@@ -3,6 +3,10 @@
 
 #include "la_matrix.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 double la_dot(const double* u, const double* v, int n);
 double la_norm(const double* v, int n);
 void   la_normalize(const double* v, double* result, int n);
@@ -21,5 +25,9 @@ void la_orthogonal_projection(const double* v, const double* basis,
 /* Least squares: solve min ||Ax - b||^2 via normal equations */
 /* A is m x n, b is m, result is n */
 int la_least_squares(const LAMatrix* A, const double* b, double* result);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LA_INNER_H */

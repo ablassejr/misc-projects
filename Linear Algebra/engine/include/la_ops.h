@@ -3,6 +3,10 @@
 
 #include "la_matrix.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Arithmetic */
 LAMatrix* la_matrix_add(const LAMatrix* A, const LAMatrix* B);
 LAMatrix* la_matrix_scalar_mul(const LAMatrix* A, double scalar);
@@ -24,5 +28,9 @@ void la_back_sub(const LAMatrix* U, const double* y, double* x, int n);
 LAMatrix* la_elementary_swap(int n, int i, int j);
 LAMatrix* la_elementary_scale(int n, int i, double c);
 LAMatrix* la_elementary_add(int n, int target, int source, double c);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LA_OPS_H */

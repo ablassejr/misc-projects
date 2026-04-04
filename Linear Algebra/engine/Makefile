@@ -1,20 +1,20 @@
-CC = cc
-CFLAGS = -O2 -fPIC -Wall -Wextra -std=c11 -Iinclude
-SOURCES = $(wildcard src/*.c)
-OBJECTS = $(SOURCES:src/%.c=build/%.o)
+CXX = c++
+CXXFLAGS = -O2 -fPIC -Wall -Wextra -std=c++17 -Iinclude
+SOURCES = $(wildcard src/*.cpp)
+OBJECTS = $(SOURCES:src/%.cpp=build/%.o)
 
 .PHONY: all clean
 
 all: build/liblinalgcore.dylib build/liblinalgcore.a
 
 build/liblinalgcore.dylib: $(OBJECTS)
-	$(CC) -dynamiclib -o $@ $^
+	$(CXX) -dynamiclib -o $@ $^
 
 build/liblinalgcore.a: $(OBJECTS)
 	ar rcs $@ $^
 
-build/%.o: src/%.c | build
-	$(CC) $(CFLAGS) -c $< -o $@
+build/%.o: src/%.cpp | build
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 build:
 	mkdir -p build

@@ -9,6 +9,10 @@ typedef struct {
     int cols;
 } LAMatrix;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Lifecycle */
 LAMatrix* la_matrix_new(int rows, int cols);
 LAMatrix* la_matrix_from_array(int rows, int cols, const double* data);
@@ -25,5 +29,9 @@ LAMatrix* la_matrix_identity(int n);
 void      la_matrix_print(const LAMatrix* mat);
 int       la_matrix_rows(const LAMatrix* mat);
 int       la_matrix_cols(const LAMatrix* mat);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LA_MATRIX_H */

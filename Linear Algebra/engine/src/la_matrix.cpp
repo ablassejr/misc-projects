@@ -1,30 +1,31 @@
 #include "la_matrix.h"
 #include "la_config.h"
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
+#include <cstdio>
+#include <cstring>
+#include <cmath>
+#include <cstdlib>
 
 LAMatrix* la_matrix_new(int rows, int cols) {
-    LAMatrix* mat = malloc(sizeof(LAMatrix));
-    if (!mat) return NULL;
+    auto* mat = static_cast<LAMatrix*>(std::malloc(sizeof(LAMatrix)));
+    if (!mat) return nullptr;
     mat->rows = rows;
     mat->cols = cols;
-    mat->data = calloc((size_t)rows * cols, sizeof(double));
-    if (!mat->data) { free(mat); return NULL; }
+    mat->data = static_cast<double*>(std::calloc(static_cast<size_t>(rows) * cols, sizeof(double)));
+    if (!mat->data) { std::free(mat); return nullptr; }
     return mat;
 }
 
 LAMatrix* la_matrix_from_array(int rows, int cols, const double* data) {
     LAMatrix* mat = la_matrix_new(rows, cols);
-    if (!mat) return NULL;
-    memcpy(mat->data, data, (size_t)rows * cols * sizeof(double));
+    if (!mat) return nullptr;
+    std::memcpy(mat->data, data, static_cast<size_t>(rows) * cols * sizeof(double));
     return mat;
 }
 
 void la_matrix_free(LAMatrix* mat) {
     if (mat) {
-        free(mat->data);
-        free(mat);
+        std::free(mat->data);
+        std::free(mat);
     }
 }
 
@@ -46,7 +47,7 @@ double* la_matrix_data_ptr(const LAMatrix* mat) {
 
 LAMatrix* la_matrix_identity(int n) {
     LAMatrix* mat = la_matrix_new(n, n);
-    if (!mat) return NULL;
+    if (!mat) return nullptr;
     for (int i = 0; i < n; i++)
         mat->data[LA_IDX(i, i, n)] = 1.0;
     return mat;
@@ -54,12 +55,12 @@ LAMatrix* la_matrix_identity(int n) {
 
 void la_matrix_print(const LAMatrix* mat) {
     for (int i = 0; i < mat->rows; i++) {
-        printf("  [");
+        std::printf("  [");
         for (int j = 0; j < mat->cols; j++) {
-            printf("%8.4f", mat->data[LA_IDX(i, j, mat->cols)]);
-            if (j < mat->cols - 1) printf(", ");
+            std::printf("%8.4f", mat->data[LA_IDX(i, j, mat->cols)]);
+            if (j < mat->cols - 1) std::printf(", ");
         }
-        printf("]\n");
+        std::printf("]\n");
     }
 }
 

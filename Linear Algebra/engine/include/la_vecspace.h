@@ -3,6 +3,10 @@
 
 #include "la_matrix.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int  la_rank(const LAMatrix* A);
 int  la_nullity(const LAMatrix* A);
 
@@ -25,5 +29,9 @@ int  la_is_in_span(const double* v, const double* vectors, int num_vectors, int 
 /* Change of basis: computes transition matrix P (n x n) */
 /* old_basis and new_basis are n x n matrices (basis vectors as columns) */
 LAMatrix* la_change_of_basis(const LAMatrix* old_basis, const LAMatrix* new_basis);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LA_VECSPACE_H */
