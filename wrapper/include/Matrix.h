@@ -7,6 +7,7 @@
 
 extern "C" {
 #include "la_matrix.h"
+#include "la_elimination.h"
 }
 
 class Matrix {
@@ -25,6 +26,14 @@ public:
     double& operator()(int i, int j);
     double  operator()(int i, int j) const;
     LAMatrix* raw() const;
+
+    /* Ch.1: Elimination */
+    void swap_rows(int i, int j);
+    void scale_row(int i, double scalar);
+    void add_scaled_row(int target, int source, double scalar);
+    Matrix ref() const;
+    Matrix rref() const;
+    int solve(std::vector<double>& result) const;
 
     /* Factory */
     static Matrix identity(int n);

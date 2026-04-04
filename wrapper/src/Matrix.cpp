@@ -39,6 +39,30 @@ double Matrix::operator()(int i, int j) const {
 
 LAMatrix* Matrix::raw() const { return m_; }
 
+void Matrix::swap_rows(int i, int j) { la_swap_rows(m_, i, j); }
+void Matrix::scale_row(int i, double scalar) { la_scale_row(m_, i, scalar); }
+void Matrix::add_scaled_row(int target, int source, double scalar) {
+    la_add_scaled_row(m_, target, source, scalar);
+}
+
+Matrix Matrix::ref() const {
+    Matrix copy(*this);
+    la_to_ref(copy.m_);
+    return copy;
+}
+
+Matrix Matrix::rref() const {
+    Matrix copy(*this);
+    la_to_rref(copy.m_);
+    return copy;
+}
+
+int Matrix::solve(std::vector<double>& result) const {
+    int n_vars = m_->cols - 1;
+    result.resize(n_vars, 0.0);
+    return la_solve(m_, result.data());
+}
+
 Matrix Matrix::identity(int n) {
     Matrix m(n, n);
     for (int i = 0; i < n; i++) m(i, i) = 1.0;
