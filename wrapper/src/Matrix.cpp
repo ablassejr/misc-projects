@@ -138,6 +138,39 @@ int Matrix::cramers_solve(const std::vector<double>& b, std::vector<double>& res
     return la_cramers_rule(m_, b.data(), result.data());
 }
 
+int Matrix::rank() const { return la_rank(m_); }
+int Matrix::nullity() const { return la_nullity(m_); }
+
+Matrix Matrix::null_space() const {
+    LAMatrix* b = nullptr;
+    int dim = la_null_space(m_, &b);
+    if (dim == 0 || !b) return Matrix(m_->cols, 0, {});
+    Matrix res(b->rows, b->cols);
+    la_matrix_free(res.m_);
+    res.m_ = b;
+    return res;
+}
+
+Matrix Matrix::column_space() const {
+    LAMatrix* b = nullptr;
+    int dim = la_column_space(m_, &b);
+    if (dim == 0 || !b) return Matrix(m_->rows, 0, {});
+    Matrix res(b->rows, b->cols);
+    la_matrix_free(res.m_);
+    res.m_ = b;
+    return res;
+}
+
+Matrix Matrix::row_space() const {
+    LAMatrix* b = nullptr;
+    int dim = la_row_space(m_, &b);
+    if (dim == 0 || !b) return Matrix(0, m_->cols, {});
+    Matrix res(b->rows, b->cols);
+    la_matrix_free(res.m_);
+    res.m_ = b;
+    return res;
+}
+
 Matrix Matrix::identity(int n) {
     Matrix m(n, n);
     for (int i = 0; i < n; i++) m(i, i) = 1.0;

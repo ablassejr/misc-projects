@@ -10,6 +10,7 @@ extern "C" {
 #include "la_elimination.h"
 #include "la_ops.h"
 #include "la_determinant.h"
+#include "la_vecspace.h"
 }
 
 #include <utility>
@@ -52,6 +53,13 @@ public:
     double det_cofactor() const;
     Matrix adjoint() const;
     int cramers_solve(const std::vector<double>& b, std::vector<double>& result) const;
+
+    /* Ch.4: Vector Spaces */
+    int rank() const;
+    int nullity() const;
+    Matrix null_space() const;
+    Matrix column_space() const;
+    Matrix row_space() const;
 
     /* Factory */
     static Matrix identity(int n);
