@@ -7,3 +7,14 @@
 .idea/
 .vscode/
 
+engine/build/
+wrapper/build/
+web/dist/
+web/node_modules/
+__pycache__/
+*.o
+*.a
+*.dylib
+*.so
+*.wasm
+.worktrees/
