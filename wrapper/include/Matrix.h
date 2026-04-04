@@ -9,6 +9,7 @@ extern "C" {
 #include "la_matrix.h"
 #include "la_elimination.h"
 #include "la_ops.h"
+#include "la_determinant.h"
 }
 
 #include <utility>
@@ -45,6 +46,12 @@ public:
     Matrix transpose() const;
     Matrix inverse() const;
     std::pair<Matrix, Matrix> lu() const;
+
+    /* Ch.3: Determinants */
+    double det() const;
+    double det_cofactor() const;
+    Matrix adjoint() const;
+    int cramers_solve(const std::vector<double>& b, std::vector<double>& result) const;
 
     /* Factory */
     static Matrix identity(int n);

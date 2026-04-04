@@ -121,6 +121,23 @@ std::pair<Matrix, Matrix> Matrix::lu() const {
     return {Lm, Um};
 }
 
+double Matrix::det() const { return la_det_elimination(m_); }
+double Matrix::det_cofactor() const { return la_det_cofactor(m_); }
+
+Matrix Matrix::adjoint() const {
+    LAMatrix* r = la_adjoint(m_);
+    if (!r) throw std::runtime_error("Adjoint failed");
+    Matrix res(r->rows, r->cols);
+    la_matrix_free(res.m_);
+    res.m_ = r;
+    return res;
+}
+
+int Matrix::cramers_solve(const std::vector<double>& b, std::vector<double>& result) const {
+    result.resize(m_->rows, 0.0);
+    return la_cramers_rule(m_, b.data(), result.data());
+}
+
 Matrix Matrix::identity(int n) {
     Matrix m(n, n);
     for (int i = 0; i < n; i++) m(i, i) = 1.0;
